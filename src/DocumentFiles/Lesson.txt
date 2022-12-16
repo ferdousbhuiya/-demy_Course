@@ -54,4 +54,54 @@ being passed, when the method is invoked.
 
 Q: what is method signature?
 Ans: A method signature consists of the name of the method, and the
-uniqness of the declaration of its parameters.
+uniqueness of the declaration of its parameters.
+
+Q: While statement
+
+while (condition){
+    //statements
+}
+
+inside the curly braces, it will indicate the body of the while loop.
+
+do{
+// statements
+} while(condition);
+
+For a for loop:
+
+    for(int i=0; i<100; i++){
+        System.out.println("i = "+1);
+    }
+
+    if we convert to while loop:
+    int i=0;
+    while(i<100){
+        System.out.println("i = "+1);
+        i++;
+    }
+
+Q: What is an Object?
+Ans: An object is called an instance of a particular class.
+
+Q: Try and Catch
+
+Ans: The try statement actually has two code bocks.
+The first is declared directly after the try keyword, and this
+code block end , and is followed by the declaration of the catch keyword.
+The catch keyword includes own code block.
+
+try {
+// statements that might get errors
+} catch (Excepteion e){
+//code to 'handle' the exception
+}
+
+Q: What is a Constructor?
+Ans: A Constructor is used in the creation of an object, that's an instance of a class.
+Its a special type of code block that has a specific name and parameters, much like a method.
+It has the same name as the class itself, and it doesn't return any values.
+
+If a class contains no constructor declarations, then a default constructor is implicitly declared.
+
+
