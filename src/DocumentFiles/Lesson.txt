@@ -99,9 +99,50 @@ try {
 
 Q: What is a Constructor?
 Ans: A Constructor is used in the creation of an object, that's an instance of a class.
-Its a special type of code block that has a specific name and parameters, much like a method.
+It's a special type of code block that has a specific name and parameters, much like a method.
 It has the same name as the class itself, and it doesn't return any values.
 
 If a class contains no constructor declarations, then a default constructor is implicitly declared.
 
+*****************************  From Deepak, www.Smartprogramming.in  *******
+
+Q: What is OOPs?
+Ans: Object-Oriented Programming system / Structure.
+    OOP is a programming paradigm / methodology.
+    inside the programming paradigm there are different ways, like:
+    a. Object-oriented paradigm
+    b. Procedural paradigm.
+    c. functional paradigm.
+    d. logical paradigm.
+    e. Structural paradigm.
+There are 6 main pillars / concepts of OOPs:
+1. Class  2. Object & Method     3. Inheritance      4. Polymorphism
+5. Abstraction  6. Encapsulation
+
+Smalltalk was the first purely OOPs.
+Java, C++, Python all are the also OOPs.
+
+            Class:
+
+                  | ---> Dog
+      Animal ->   | ---> Cat
+                  | ---> Elephant
+
+        Here Animal is a class and Dog, Cat, Elephant are Object.
+
+1. Class is the connection of Objects
+2. Class is not a real world entity. It is just a template or blueprint.
+3. Class does not occupy memory.
+
+
+
+
+
+Q: Difference between this vs super.
+Ans: The keyword super is use dto access or call the parent class
+members (variables and methods).
+The keyword this is used to call the current class members(variable and methods).
+'this' is required , when we have a parameter with the same name, as an
+instance variable or field.
+Q: Method overloading vs method overriding.
 
