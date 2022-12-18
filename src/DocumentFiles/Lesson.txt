@@ -97,12 +97,6 @@ try {
 //code to 'handle' the exception
 }
 
-Q: What is a Constructor?
-Ans: A Constructor is used in the creation of an object, that's an instance of a class.
-It's a special type of code block that has a specific name and parameters, much like a method.
-It has the same name as the class itself, and it doesn't return any values.
-
-If a class contains no constructor declarations, then a default constructor is implicitly declared.
 
 *****************************  From Deepak, www.Smartprogramming.in  *******
 
@@ -122,17 +116,473 @@ There are 6 main pillars / concepts of OOPs:
 Smalltalk was the first purely OOPs.
 Java, C++, Python all are the also OOPs.
 
+
+(1). -------*********** Class ************----------
+
             Class:
 
                   | ---> Dog
       Animal ->   | ---> Cat
                   | ---> Elephant
 
-        Here Animal is a class and Dog, Cat, Elephant are Object.
 
-1. Class is the connection of Objects
+                  | ---> Sparrow
+       Birds ->   | ---> Parrot
+                  | ---> Eagle
+
+
+                  | ---> Toyota
+         Car ->   | ---> RangRover
+                  | ---> Lexus
+
+        Here Animal is a class and Dog, Cat, Elephant are Object.
+        Birds and Car are class and others are objects.
+
+1. Class is the collection of Objects
 2. Class is not a real world entity. It is just a template or blueprint.
-3. Class does not occupy memory.
+3. Class does not occupy memory. As, 'Animal' there is no physical existence.
+
+Syntax of Class:
+access-Modifier Class ClassName
+{
+        Body of class( Inside this body methods, constructor, fields or blocks may contain)
+}
+
+(2). -------*********** Method & Object ************----------
+
+        Method:
+Q: What is Method?
+Ans: A set of codes which perform a particular task.
+
+Advantage of Method.
+a. Code reusability
+b. code optimization
+
+Sytax of Method:
+
+access-modifier return type methodName (list of parameters)
+{
+        Body of method.
+}
+
+            Object
+
+Q: What is Object?
+Ans: Object is a instance of a class. Object is a real world entity.
+    Object occupies memory.
+
+    Theses 3 points should consist of Object.
+Object consists of identity -> Name (Dog)
+Object consists of State/Attribute -> Color, age, breed etc.
+Object consists of Behaviour -> Eat, run, bark
+
+Q: How to create Object?
+Ans:    1. By using New keyword
+        2. By using NewInstance() method.
+        3. By using clone() method.
+        4. By using deserialization
+        5. By using factory method.
+
+Q: How to create Object by using New keyword?
+Ans:    1). Declaration
+                It is declaring a variable name with an object type.
+                Example: Animal buzo: (Where 'Animal' is ClassName and 'buzo'
+                         is reference_variable_name)
+        2). Instantiation
+                By using 'new' keyword we can instantiate the object.
+                Animal buzo = new Animal(); is an example. Here Animal () is
+                the constructor and used to initiate the object.
+        3). Initialization
+                To initialize the object, we can use the constructor.
+
+                        Instantiate the object
+                         |
+                         V
+          Animal buzo = new Animal();
+             |      |               |
+             V      V               V
+             Class  reference       Constructor
+             name   variable name
+
+Syntax of Object:
+        Animal buzo = new Animal();
+
+We can call method through object by using dot(.). To call the behaviour /Method of class.
+        buzo.run(); or
+        buzo.eat();
+
+Example of Class and Object:
+
+        class Animal // there is access-modifier means default is available
+        {
+            public void eat() // Method
+            {
+                System.out.println("I am Eating");
+            }
+
+            public static void main(String [] args)
+            {
+                System.out.println("1");
+                // if we run this program like this, it will not
+                // print 'I am Eating', because without object the
+                // method will not work. That's why we need a object
+                // to call the method. So, now we will create an
+                // object and then call method.
+
+                Animal buzo = new Animal();
+                buzo.eat(); // now it will print the 'I am Eating'
+                            // The another method run() we can call
+                            // under this object or we can call through
+                            // another object.
+                   // we can use:
+
+                   Animal tomy = new Animal();
+                   tomy.run();
+
+                   // it is fully dependent on the project requirement.
+            }
+            public void run()
+            {
+                System.out.println("I am running");
+            }
+
+        }
+
+
+Q: How to initialize an object?
+Ans: We can initialize an object by 3 methods,
+        a. by using reference variable
+        b. by method
+        c. by constructor
+
+
+  a.    By using reference variable: to initiate an object:
+        Example:
+        class Animal
+        {
+            String color; // this 'color' is reference variable
+            int age;
+
+            public static void main(String [] args)
+            {
+                Animal buzo = new Animal();
+                buzo.color = "Black";
+                buzo.age = 10;
+                System.out.println(buzo.color +" " +buzo.age);
+
+                //here 'buzo' is the object of Animal and initiate this
+                // object by using .(dot) operator.
+                //the color of buzo initiate to Black and age of buzo
+                //initiate to 10.
+            }
+        }
+
+   b.   By using method
+
+   class Animal
+   {
+        String color;
+        int age;
+        void initObject(String c, int a)
+        {
+            color = c;
+            age = a;
+        }
+        void display()
+        {
+            System.out.println(color +" "+age);
+        }
+
+        public static void main(String[] args)
+        {
+            Animal buzo = new Animal();
+            buzo.initObject("Black", 10);
+                //here by the method initObject we can initiate
+                //the object.
+            buzo.display();
+
+        }
+   }
+
+   c. By using constructor:
+
+Q: What is a Constructor?
+Ans: A Constructor is used in the creation of an object, that's an instance of a class.
+It's a special type of code block that has a specific name and parameters, much like a method.
+It has the same name as the class itself, and it doesn't return any values.
+
+If a class contains no constructor declarations, then a default constructor is implicitly declared.
+
+Another definition (By Deepak): 1). Constructor is a block (similar to method)
+                                    having same name as that of class Name.
+                                2). Does not have any return type, not even void.
+                                3). The only modifiers are applicable for constructor are
+                                    public, protected, default and private.
+                                4). It executes automatically when we create an Object.
+
+Q: What is the purpose of Constructor?
+Ans:
+     a). Constructors are used to initialize an Object.
+
+            Example:
+
+            class Employee
+            {
+                String name; // Both are Instance variables
+                int employeeID; // Instance variable
+
+                // Example of constructor:
+                Employee(String name, int employeeID)
+                this.name = name;
+                this.employeeID = employeeID;
+
+                Public static void main(String [] args)
+                {                                               // This constructor is used to
+                    Employee e1 = new Employee("Ferdous", 123); // initialize the object.
+                    Employee e2 = new Employee("Abdullah", 7897);
+                }
+            }
+
+     b). There are 3 types of constructor
+            i). Default constructor (no-argument constructor)
+            ii). No-arg constructor (User defined)
+            iii). Parameterized constructor
+
+
+            i). Default constructor is created by Compiler not by JVM.
+                    a). If we create any constructor then this automatically
+                        created constructor will not create any constructor.
+           ii). If user create any constructor without any argument,
+                then it is called No-argument constructor (user-defined).
+          iii). The constructor in which the argument is available
+                and created by user is called parameterized constructor.
+
+Q: Why there is no return type in constructor?
+Ans: The main function of constructor is to initialize of an Object.
+     When it only initializes and object, and there will be no
+     return value of anything. That's why there is no return value.
+
+
+(3). -------*********** Inheritance ************----------
+
+
+Q: What is Inheritance?
+Ans: It is inheriting the properties of parent class into child class.
+    Or
+Inheritance is the procedure by which one object acquires all the
+properties and behaviors of a parent object.
+
+Example:
+
+        class Animal   // parent class or Super class
+        {
+            void eat()
+            {
+                    System.out.println("I  am eating");
+            }
+        }
+
+// there is another class name Dog is created and we would like to
+// call the method of first class (eat method).
+
+        class Dog extends Animal  // Dog is subclass or child class
+        {
+            public static void main(String [] args)
+            {
+                Dog d = new Dog();
+                d.eat(); // if we don't use the words "extends Animal"
+                         // we could not call eat() method.
+
+            }
+        }
+
+Q: What is the relationship between Animal and Dog?
+Ans: It is { IS-A } relationship, Dog is a Animal.
+     Inheritance is a IS-A relationship.
+
+Q: What are the advantage of inheritance?
+Ans:
+        (1). Code reusability.
+        (2). We can achieve polymorphism (method overriding).
+Q: What is the main disadvantage of inheritance?
+Ans: It is tightly coupled between parent and child class. If any
+     changes in the parent class it will directly affect on child class.
+
+Q: How many types of inheritance?
+Ans:
+        a). Single inheritance
+        b). Multi level inheritance
+        c). Hierarchical inheritance
+        d). Multiple inheritance. Ambiguity problem.
+        e). Hybrid inheritance. Diamond case problem.
+
+    but in java only 3 types of inheritances are available.
+
+Q: Are all properties of parent class transfer to child class?
+Ans: No, all properties will not transfer. Any constructor inside
+     the parent class will not transfer and any private method
+     will not transfer.
+
+Q: Types of relationship between two classes in java.
+Ans: Broadly defined as:
+                        a). IS-A relationship ( Inheritance)
+                        b). HAS-A relationship (Association)
+                                Association is also divided into
+                                two parts:
+                                    1. Aggregation
+                                    2. Composition
+
+
+Q: Advantage of relationship
+Ans:
+        a). Code Reusablity.
+        b). cost cutting.
+        c). Reduced redundancy.
+
+       ********** Inheritance (IS_A) relationship  **********
+We have already discussed in the inheritance chapter.
+All advantage and disadvantages are discussed there.
+
+        ********** Association (HAS-A) relationship ***********
+
+        Example:
+                    class Student
+                    {
+                        String name;
+                        int roll no. ;
+
+                        // here alread build one relationship, such as
+                        // Student {HAS-A} name
+                        // Student {HAS-A} roll no.
+                    }
+
+        Another example is:
+
+                class Engine
+                {
+
+                }
+
+                class Car
+                {
+                        // If we make an object of Engine inside the Car
+                        // class, then the HAS-A relationship will build.
+
+                        Engine engine = new Engine();
+
+                        // So, by using 'new' keyword we can build a relationship.
+
+                }
+
+// In these Engine and Car classes if we don't use 'Extends' keyword
+// then the relationship will not be inheritance and all properties will not
+// come to the child class.
+// By using the HAS-A relationship in between two classes the
+// relationship will not be tightly coupled.
+// We can choose some properties only.
+
+        Association is classified into two types:
+        Aggregation and Composition
+
+        Aggregation has week bonding and Composition has Strong bonding.
+
+
+(4). -------*********** Polymorphism ************----------
+
+Q: What is Polymorphism?
+Ans: Polymorphism (Method Overloading and Method Overriding) , poly means many
+and morphism means many.
+Such as shape,  shape may be circled, square, or rectangle etc.
+for water, ice, steam and water all are the forms of water.
+
+Q: How many types of Polymorphism?
+Ans: There are two types of Polymorphism.
+     1. Compile time Polymorphism (Static Polymorphism)
+              It can be achieved by Method Overloading.
+              It is handled by Compiler.
+     2. Run-Time Polymorphism (Dynamic Polymorphism).
+               It can be achieved by Method Overriding.
+               It is handled by JVM.
+
+
+Q: How to achieve Method overloading and Overriding?
+
+_________________________________________________________________________
+Method Overloading              |            Method Overriding
+-------------------------------------------------------------------------
+1). Same Name                   |   1). Same Name
+2). Same class                  |   2). Different class
+3). Different arguments         |   3). Same arguments
+    a. No. of arguments         |       a. No. of arguments
+    b. Sequence of arguments    |       b. Sequence of arguments
+    c. Types of arguments       |       c. Types of arguments
+                                |   4). Inheritance relation (IS-A) must
+--------------------------------------------------------------------------
+
+Example of Method Overloading:
+
+    class Test
+    {
+        void show()
+        {
+        System.out.println("1");
+        }
+
+        void show()
+        {
+            System.out.println("2");
+        }
+
+        public static void main(String [] args)
+        {
+        Test t = new Test();
+        t.show();
+        // upto this program, compiler will be confused which show method
+        // will call it.
+        // This type of error is called 'Ambiguity error'.
+
+        // until now it fulfil only first two condition of Method overloading.
+        // for full achievement of overloading we have look for the third
+        // conditions. That means we have to look for arguments, no. of arguments,
+        // sequence of arguments or type of arguments. Then the compiler will
+        // not confuse. At least any one of show() method should modify with
+        // inserting agreements. After then the class will be look like:
+        }
+    }
+
+class Test
+    {
+        void show(int a)
+        {
+        System.out.println("1");
+        }
+
+        void show()
+        {
+            System.out.println("2");
+        }
+
+        public static void main(String [] args)
+        {
+        Test t = new Test();
+        t.show(10);
+        }
+
+    }
+#########   Some interview questions  ###############
+
+Q: Can we achieve method overloading by changing the return type of method only?
+Ans: No, because of Ambiguity.
+Q: Can we overload java main method?
+Ans: yes, we can have any number of main methods in a class by method
+    overloading. This is because JVM always calls main() method which
+    receives string array as arguments only.
+Q: Method overloading and Type Promotion
+Ans: One type is promoted to another implicitly if no matching datatype is found.
+If any argument in a method is not matching with any argument in the original
+method then it started to automatic promotion.
+Q: Different cases of Type Promotion.
+
 
 
 
