@@ -583,10 +583,311 @@ If any argument in a method is not matching with any argument in the original
 method then it started to automatic promotion.
 Q: Different cases of Type Promotion.
 
+Method Overriding:
+
+class Test
+{
+    void show()
+    {
+        System.out.println("1");
+    }
+}
+
+class Xyz extends Test  // it must be needs extends Test
+{
+    void show()
+    {
+        System.out.println("2");
+    }
+    public static void main(String [] args)
+    {
+        Test t = new Test();
+        t.show();
+
+        Xyz x = new Xyz();
+        x.show();
+    }
+}
+
+Q: Do overriding method mush have same return type (or Subtype)?
+Ans: From Java 5.0 onwards it is possible to have different return type for a
+overriding method in child class, but child's return type should be
+subtype of parent's return type. This phenomena is known as covariant return type.
+
+Q: Overriding access modifier.
+Ans: The access modifier for and overriding method can allow more, but not less,
+access than the overriden method. For example, a protected instance method
+in the super-class can be made public, but not private, in the subclass.
+Doing so, will generate compile-time error.
+
+
+############ Overriding and Exception-Handling #############
+
+Below are two rules to note when overriding methods related to exception handling.
+
+Rule 1: If the super-class override method does not throws and exception,
+subclass overriding method can only throw the unchecked exception,
+throwing checked exception will lead to compile-time error.
+
+Rule 2: If the super-class overridden method does throws an exception,
+subclass overriding method can only throw same, subclass exception. Throwing
+parent exception in Exception hierarchy will lead to compile time error.
+Also there is no issue if subclass overriden method is not throwing any exception.
+
+Q: Overriding and Abstract Method
+Ans: Abstract methods in an interface or abstract class are meant to be
+overriden  in derived concrete classes otherwise compile-time error will be
+thrown.
+
+Q: Invoking overridden method from subclass.
+Ans: We can call parent class method in overriding method using super keyword.
+
+Q: Which method cannot overriden?
+Ans:
+Final methods can not be overridden: if we don't want a method to be overridden,
+we declare it as final.
+Static methods can not be overridden:
+(Methods Overriding vs Method Hiding) When you define a static method with same
+signature as a static method in base class, it is known as method hiding.
+
+Private methods can not be overridden :
+Private methods cannot be overriden as they are bonded during compiling time.
+Therefore, we can't even override private methods in a subclass.
+
+(5). -------*********** Abstraction ************----------
+
+Difference between Abstraction and Encapsulation:
+
+____________________________________________________________________________
+        Abstraction                 |       Encapsulation
+----------------------------------------------------------------------------
+1. Abstraction is detail hiding     | 1. Encapsulation is data hiding
+    (Implementation hiding)         |    (information hiding).
+2. Data abstraction deals with      | 2. Encapsulation groups together data
+    exposing the interface to the   |    and methods that act upon the data.
+    user and hiding the details of  |
+    implementation.                 |
+-----------------------------------------------------------------------------
+
+Abstraction --> |
+                | --> Abstract Class (0 to 100%)
+                | --> Interfaces (100%)
+
+Example:
+
+        abstract class Vehicle
+        {
+            int numberOfTyres;
+            abstract void start();
+        }
+
+ Abstract method is a method where there is no body available in the method.
+ For any abstract method the must be abstract. But for any abstract
+ class it is not essential to have the abstract method. If any abstract
+ class have the abstract method then it will achieve 100% abstraction.
+
+    If a regular class extends an abstract class, then the class must have
+    to implement all the abstract methods of abstract parent class or it
+    has to be declared abstract as well.
+
+Abstract classes cannot be instantiated, means we cannot create an Object
+of Abstract class.
+
+
+    abstract class Vehicle
+    {
+        abstract void start();
+    }
+
+    class Car extends Vehicle
+    {
+        void start()
+        {
+            System.out.println("Car starts with key");
+        }
+    }
+
+    class Scooter extends Vehicle
+    {
+        void start()
+        {
+            System.out.println("Scooter starts with kick");
+        }
+
+        public static void main(String [] args)
+        {
+            // Vehicle v = new Vehicle();  // we cannot make object of abstract class
+            Car c = new Car();
+            c.start();
+
+            Scooter s = new Scooter();
+            s.start();
+        }
+    }
 
 
 
+################----------****** Interface *******######################
 
+
+Interfaces are blueprint of the class. It specify what a class must do and not how to do.
+
+Q: Uses of interface:
+1. it is used to achieve abstraction.
+2. it supports multiple inheritance.
+3. it can be used to achieve loose coupling.
+
+Example:
+        interface InterfaceName
+        {
+            methods // it must be public and abstract methods
+                    // if we don't use public abstract
+                    // compiler automatically set public abstract and
+                    // all fields will be final.
+                    // it will be 'public static final int a = 10;' like this.
+
+
+            fields
+        }
+
+        Example:
+
+        interface I1
+        {
+            public void show();
+        }
+
+        class Test implements I1
+        {
+            public void show()
+            {
+                System.out.println("1");
+            }
+
+            public static void main(String [] args)
+            {
+            Test t = new Test();
+            t.show();
+            }
+        }
+
+
+Q: What is interface?
+Ans: 1. Interface is a mechanism to achieve abstraction in java.
+     2. Interface is similar to abstract calss but having all the methods of abstract
+        type i.e. it cannot have a method body.
+     3. Since Java 8, we can have default and static methods in an
+        interface.
+     4. Since Java 9, we can have private methods in an interface.
+
+Q: Why use java interface?
+Ans: 1. It is used to achieve abstraction.
+     2. By interface, we can support the functionality of
+        multiple inheritance.
+     3. It can be used to achieve loose coupling.
+Q: Syntax:
+interface interfaceName
+{
+    //constants fields
+    // abstract methods
+}
+Q: Similarities between Abstract class & Interfaces
+Ans: 1. Both can contain abstract methods.
+     2. We cannot create an instance of abstract class & interfaces.
+
+Q: Difference between Abstract & interface.
+Ans:
+
+____________________________________________________________________________
+        Abstract Class              |            Interface
+----------------------------------------------------------------------------
+1. Abstract class can have instance |1. Methods of a Java interface are
+    methods that implements a       |   implicitly abstract and cannot have
+    default behavior.               |   implementations.
+2. An abstract class may contain    |2. Interface contains public, static
+    non-final variables.            |   & final variables only.
+3. Methods & variables can have     |3. Interface contains public, static &
+    any access-modifier i.e. public |   final variables only.
+    protected, default & private.   |
+4. java abstract class should be    |4. Java interface should be implemented
+    extended using kyword "extends".|   using keyword "implements".
+5. An abstract class can extends    |5. An interface can extend another java
+    another java class and implement|   interface only.
+    multiple java interfaces.       |
+----------------------------------------------------------------------------
+
+
+(6). -------*********** Encapsulation ************----------
+
+Q: What is Encapsulation?
+Ans: Encapsulation in java is a mechanism of wrapping the data (variables)
+    and code acting on the data (methods) together as a single unit.
+Q: Steps to achieve encapsulation
+Ans: 1. Declare the variables of a class as private.
+     2. Provide public setter and getter methods to modify and view the
+        variables values.
+in encapsulation, the variables of a class will be hidden from other calasses,
+and can be accessed only through the methods of their current class.
+This concept is known as Data Hiding.
+
+Example:
+        class Employee
+        {
+            private int empId;  // due to this 'private' it can only be used
+                                // inside the class.
+        }
+
+
+Example program is available in "Encapsulation.java".
+
+
+Q: 'this' keyword.
+
+Example of a class,
+
+    class Test
+    {
+        int i; // instance variable.
+        void setValues(int i) // here this i is local variable
+        {
+            this.i=i; // this keyword refers to the current class instance variable.
+        }
+        void show()
+        {
+        System.out.println(i);
+        }
+    }
+
+    class Xyz
+    {
+        public static void main(String[] args)
+        {
+            Test t = new Test();
+            t.setValues(10); // this will set the value of local variable value. i.e i=10
+            t.show();  // it will print 10
+        }
+    }
+Q: What are the uses of 'this' keyword?
+Ans:
+    'this' keyword is a reference variable which is used to
+    refer immediate parent class object.
+    'this'  can be used in different ways:
+    1. this keyword can be used to refer current class instance variable.
+    2. this keyword can be used to invoke current class method (implicitly).
+    3. this() can be used to invoke current class constructor.
+    4. this can be used to pass as an argument in the method call.
+    5. this can be used to pass as an argument in the constructor call.
+    6. this can be used to return the current class instance from the method.
+
+    All of these uses available in the intelij.
+
+Q: 'super' keyword
+Ans:
+    'super' is a reference variable which refers to the parent class object. The uses are as:
+
+    1. 'super' keyword can be used to refer immediate parent class instance variable.
+    2. 'super' keyword can be used to invoke immediate parent class method.
+    3. super() can be used to invoke immediate parent class constructor.
 
 Q: Difference between this vs super.
 Ans: The keyword super is use dto access or call the parent class
@@ -596,3 +897,13 @@ The keyword this is used to call the current class members(variable and methods)
 instance variable or field.
 Q: Method overloading vs method overriding.
 
+
+Q: 'final' keyword uses
+Ans:
+    1. We create any final variable, it becomes constant, we cannot change
+        the value of final variable.
+    2. If we create any final method, we cannot override it.
+    3. If we create any final class, we cannot extends or inherit it.
+
+Q: 'static' keyword uses
+Ans:
