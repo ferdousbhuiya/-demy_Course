@@ -883,7 +883,11 @@ Ans:
 
 Q: 'super' keyword
 Ans:
-    'super' is a reference variable which refers to the parent class object.
+    'super' is a reference variable which refers to the parent class object. The uses are as:
+
+    1. 'super' keyword can be used to refer immediate parent class instance variable.
+    2. 'super' keyword can be used to invoke immediate parent class method.
+    3. super() can be used to invoke immediate parent class constructor.
 
 Q: Difference between this vs super.
 Ans: The keyword super is use dto access or call the parent class
@@ -893,3 +897,71 @@ The keyword this is used to call the current class members(variable and methods)
 instance variable or field.
 Q: Method overloading vs method overriding.
 
+
+Q: 'final' keyword uses
+Ans:
+    1. We create any final variable, it becomes constant, we cannot change
+        the value of final variable.
+    2. If we create any final method, we cannot override it.
+    3. If we create any final class, we cannot extends or inherit it.
+
+Q: 'static' keyword uses
+Ans:
+    static is primarily is an access modifier
+____________________________________________________________________________
+        Access Modifiers            | Non Access Modifiers
+----------------------------------------------------------------------------
+    public                          |       Static
+    private                         |       final
+    protected                       |       abstract
+    default (No modifier)           |       synchronized
+                                    |       transient
+                                    |       volatile
+                                    |       strictfp
+--------------------------------------------------------------------------
+Where can we use 'static' keyword?
+
+1). variable (in class level), not in local variable (it will show error).
+2). Methods
+3). block
+4). inner class(nested class) ( we cannot use with outer class)
+
+static variable is used to memory management.
+
+static variable uses program is available in the intelij
+
+'static' method, how to use and why to use?
+Ans:
+    'static' method, static method belongs to class not object.
+    static methods can be called directly by class name as follows:
+    ClassName.methodName();
+
+Q: Rules for 'static' methods
+Ans:
+    1. 'static' methods belongs to the class, not to the object.
+    2. A 'static' method can be accessed directly by class name and
+        doesn't need any object.
+    3. A 'static' method can access only static data. It cannot access
+        non-static data (instance data).
+    4. A 'static' method can call only other static methods and
+        cannot call a not-static method.
+    5. A 'static' method cannot refer to 'this' or 'super' keyword in anyway.
+
+
+Q: What is static block?
+Ans:
+    'static' blocks executes automatically when the class is loaded in the memory
+    Example of a 'static' block:
+
+    class Test
+    {
+            static
+            {
+                // this is static block.
+
+                System.out.println("Hello");
+            }
+    }
+
+Q: Can we create multiple static block in a class?
+Ans: Yes, we can create
